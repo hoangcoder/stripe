@@ -1,0 +1,23 @@
+{
+  "name": "drupal_ex/stripe_ex",
+  "type": "library",
+  "description": "Stripe_ex for Drupal 8",
+  "keywords": [],
+  "homepage": "https://github.com/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Drupal",
+      "homepage": "http://drupal.org",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0"
+  },
+  "autoload": {
+    "classmap": [
+      "stripeClass.php",
+    ]
+  }
+}
