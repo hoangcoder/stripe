@@ -17,7 +17,7 @@
   },
   "autoload": {
     "classmap": [
-      "stripeClass.php",
+      "stripeClass.php"
     ]
   }
 }
