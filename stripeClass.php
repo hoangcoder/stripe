@@ -36,4 +36,11 @@ class stripeClass {
     return $customer;
   }
 
+  public function chargeACustomer($data) {
+    if (count($data) == 0)
+      return false;
+    $charge = \Stripe\Charge::create($data);
+    return $charge;
+  }
+
 }
