@@ -13,16 +13,27 @@ class stripeClass {
 
   public function connectStripe() {
     \Stripe\Stripe::setApiKey($this->s_key);
-    echo 1;
   }
 
   public function checkCustomerByEmail($email = '') {
     return \Stripe\Customer::all(["limit" => 1, "email" => $email]);
   }
 
-  public static function createCustomer($data = []) {
+  public function createCustomer($data) {
     if (count($data) == 0)
       return false;
+    $customer = \Stripe\Customer::create($data);
+    return $customer;
+  }
+
+  public function createCard($cus_id, $data) {
+    if (count($data) == 0 || $cus_id == '') {
+      return false;
+    }
+    $card = \Stripe\Token::create(["card" => $data]);
+    $customer = \Stripe\Customer::retrieve($cus_id);
+    $customer->sources->create(["source" => $card['id']]);
+    return $customer;
   }
 
 }
