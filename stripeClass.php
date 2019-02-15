@@ -12,35 +12,111 @@ class stripeClass {
   }
 
   public function connectStripe() {
-    \Stripe\Stripe::setApiKey($this->s_key);
+    try {
+      return \Stripe\Stripe::setApiKey($this->s_key);
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
   }
 
   public function checkCustomerByEmail($email = '') {
-    return \Stripe\Customer::all(["limit" => 1, "email" => $email]);
+    try {
+      return \Stripe\Customer::all(["limit" => 1, "email" => $email]);
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
   }
 
   public function createCustomer($data) {
     if (count($data) == 0)
       return false;
-    $customer = \Stripe\Customer::create($data);
-    return $customer;
+    try {
+      $customer = \Stripe\Customer::create($data);
+      return $customer;
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
   }
 
   public function createCard($cus_id, $data) {
     if (count($data) == 0 || $cus_id == '') {
       return false;
     }
-    $card = \Stripe\Token::create(["card" => $data]);
-    $customer = \Stripe\Customer::retrieve($cus_id);
-    $customer->sources->create(["source" => $card['id']]);
-    return $customer;
+    try {
+      $card = \Stripe\Token::create(["card" => $data]);
+      $customer = \Stripe\Customer::retrieve($cus_id);
+      $customer->sources->create(["source" => $card['id']]);
+      return $customer;
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
   }
 
   public function chargeACustomer($data) {
     if (count($data) == 0)
       return false;
-    $charge = \Stripe\Charge::create($data);
-    return $charge;
+    try {
+      $charge = \Stripe\Charge::create($data);
+      return $charge;
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
+  }
+
+  public function listUpcomingInvoice($cus_id) {
+    try {
+      return \Stripe\Invoice::upcoming(["customer" => $cus_id]);
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
   }
 
 }
