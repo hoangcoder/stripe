@@ -119,4 +119,54 @@ class stripeClass {
     }
   }
 
+  public function createInvoiceItem($data) {
+    try {
+      return \Stripe\InvoiceItem::create($data);
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
+  }
+
+  public function createInvoice($data) {
+    try {
+      return \Stripe\Invoice::create($data);
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
+  }
+
+  public function sendAnInvoice($in_id) {
+    try {
+      $invoice = \Stripe\Invoice::retrieve($in_id);
+      $invoice->sendInvoice();
+      return $invoice;
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
+  }
+
 }
