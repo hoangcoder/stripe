@@ -186,4 +186,20 @@ class stripeClass {
     }
   }
 
+  public function createProduct($data) {
+    try {
+      return \Stripe\Product::create($data);
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
+  }
+
 }
