@@ -202,4 +202,53 @@ class stripeClass {
     }
   }
 
+  public function deleteProduct($prod_id) {
+    try {
+      $product = \Stripe\Product::retrieve($prod_id);
+      return $product->delete();
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
+  }
+
+  public function createPlan($data) {
+    try {
+      return \Stripe\Plan::create($data);
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
+  }
+
+  public function updatePlan($plan_id, $data) {
+    try {
+      return \Stripe\Plan::update($plan_id, $data);
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
+  }
+
 }
