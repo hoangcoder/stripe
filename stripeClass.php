@@ -250,5 +250,20 @@ class stripeClass {
       ];
     }
   }
+  public function createSubscription($data) {
+    try {
+      return \Stripe\Subscription::create($data);
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
+  }
 
 }
