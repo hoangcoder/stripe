@@ -1,9 +1,7 @@
 <?php
-
 namespace drupal_ex\stripe_ex;
 
 class stripeClass {
-
   protected $pub_key, $s_key;
 
   public function __construct($pub_key, $s_key) {
@@ -44,8 +42,7 @@ class stripeClass {
   }
 
   public function createCustomer($data) {
-    if (count($data) == 0)
-      return false;
+    if (count($data) == 0) return false;
     try {
       $customer = \Stripe\Customer::create($data);
       return $customer;
@@ -85,8 +82,7 @@ class stripeClass {
   }
 
   public function chargeACustomer($data) {
-    if (count($data) == 0)
-      return false;
+    if (count($data) == 0) return false;
     try {
       $charge = \Stripe\Charge::create($data);
       return $charge;
@@ -250,6 +246,7 @@ class stripeClass {
       ];
     }
   }
+
   public function createSubscription($data) {
     try {
       return \Stripe\Subscription::create($data);
@@ -266,4 +263,55 @@ class stripeClass {
     }
   }
 
+  public function allSources($cid) {
+    try {
+      return \Stripe\Customer::allSources($cid);
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
+  }
+
+  public function deleteSource($cid, $card_id) {
+    try {
+      return \Stripe\Customer::deleteSource($cid, $card_id);
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
+  }
+
+  public function createSource($cid, $data) {
+    try {
+      $card = \Stripe\Customer::createSource($cid, $data);
+      $customer = \Stripe\Customer::retrieve($cid);
+      $customer->default_source = $card->id;
+      $customer->save();
+      return $card;
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
+  }
 }
