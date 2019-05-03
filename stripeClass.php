@@ -314,4 +314,21 @@ class stripeClass {
       ];
     }
   }
+
+  public function chargeRetrieve($id) {
+    try {
+      $charge = \Stripe\Charge::retrieve($id);
+      return $charge;
+    } catch (\Stripe\Error\Base $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+          'status' => false,
+          'message' => $e->getMessage()
+      ];
+    }
+  }
 }
