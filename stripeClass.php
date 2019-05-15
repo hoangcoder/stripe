@@ -14,13 +14,13 @@ class stripeClass {
       return \Stripe\Stripe::setApiKey($this->s_key);
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -30,13 +30,13 @@ class stripeClass {
       return \Stripe\Customer::all(["limit" => 1, "email" => $email]);
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -48,13 +48,13 @@ class stripeClass {
       return $customer;
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -70,13 +70,13 @@ class stripeClass {
       return $customer;
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -88,13 +88,13 @@ class stripeClass {
       return $charge;
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -104,13 +104,13 @@ class stripeClass {
       return \Stripe\Invoice::upcoming(["customer" => $cus_id]);
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -120,13 +120,13 @@ class stripeClass {
       return \Stripe\InvoiceItem::create($data);
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -136,13 +136,13 @@ class stripeClass {
       return \Stripe\Invoice::create($data);
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -154,13 +154,13 @@ class stripeClass {
       return $invoice;
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -171,13 +171,13 @@ class stripeClass {
       return $invoice;
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -187,13 +187,13 @@ class stripeClass {
       return \Stripe\Product::create($data);
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -204,13 +204,13 @@ class stripeClass {
       return $product->delete();
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -220,13 +220,13 @@ class stripeClass {
       return \Stripe\Plan::create($data);
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -236,13 +236,13 @@ class stripeClass {
       return \Stripe\Plan::update($plan_id, $data);
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -252,13 +252,13 @@ class stripeClass {
       return \Stripe\Subscription::create($data);
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -268,13 +268,13 @@ class stripeClass {
       return \Stripe\Customer::allSources($cid);
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -284,13 +284,13 @@ class stripeClass {
       return \Stripe\Customer::deleteSource($cid, $card_id);
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -304,13 +304,13 @@ class stripeClass {
       return $card;
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
@@ -321,13 +321,32 @@ class stripeClass {
       return $charge;
     } catch (\Stripe\Error\Base $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     } catch (Exception $e) {
       return [
-          'status' => false,
-          'message' => $e->getMessage()
+        'status' => false,
+        'message' => $e->getMessage()
+      ];
+    }
+  }
+
+  public function refund($ch_id) {
+    try {
+      $refund = \Stripe\Refund::create([
+          "charge" => $ch_id
+      ]);
+      return $refund;
+    } catch (\Stripe\Error\Base $e) {
+      return [
+        'status' => false,
+        'message' => $e->getMessage()
+      ];
+    } catch (Exception $e) {
+      return [
+        'status' => false,
+        'message' => $e->getMessage()
       ];
     }
   }
